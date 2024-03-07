@@ -2,7 +2,7 @@
 public class A06_operator {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 연산자에 대해서 보겠습니다. 
 
 	}
 
