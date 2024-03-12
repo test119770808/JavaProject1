@@ -68,7 +68,4 @@ public class C02_method {
 		
 	}
 	
-	
-	
-
 }
