@@ -61,7 +61,12 @@ public class ForStarDiamond {
 			}
 			// 별찍기... 
 			for (int j = 0; j < st; j++) {
-				System.out.print("*");
+				if(j == 0 || j == st -1)
+					System.out.print("*");
+				else {
+					if (j%2 == 0) System.out.print("$");
+					else System.out.print(" ");
+				}
 			}
 			System.out.println();
 			if(i == (dan/2)) flag = false; //반적
