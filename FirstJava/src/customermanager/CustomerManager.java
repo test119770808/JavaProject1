@@ -146,7 +146,7 @@ public class CustomerManager {
 	public static void updateCustomerData(int index) {
 		System.out.println("-------UPDATE CUSTOMER INFO-------");
 		System.out.print("이름("+cusList[index].getName()+") :");
-		String name = scan.nextLine();
+		String name = scan.next();
 		if(name.length() != 0) {  // 검증... 
 			cusList[index].setName(name);
 		}
