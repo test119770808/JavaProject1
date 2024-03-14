@@ -44,10 +44,22 @@ public class Student extends Person {
 
 	public Student(String name, int age, String studentId, String major) {
 		this(name,age);
+		height = 179.6f;  //부모의 멤버중 protected 멤버 변수... 
+//		weight = 100.0f;  // default로 참조가 되지 않아요...
 		this.studentId = studentId;
 		this.major = major;
 	}
 
+	// Overriding이란? 
+	//  부모 클래스로부터 상속받은 메서드를 자식 클래스에서 행위(Method)를 바꾸거나 보완하기
+	// 위해서 다시 정의해서 사용하는 것 (재정의)
+	// 
+	//  재정의 규칙
+	//  - 상속을 전제로 함
+	//  - 리턴 타입, 메서드 이름, 파라미터 변수 선언이 일치해야 함.... 
+	//  - 접근 제한자는 같거나 more public해야 함... 
+	//    private < default < protected < public
+	
 	@Override
 	public String getDetails() {
 		// TODO Auto-generated method stub
