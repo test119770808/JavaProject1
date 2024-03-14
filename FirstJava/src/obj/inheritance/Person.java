@@ -39,7 +39,7 @@ public class Person {
 	// 이름과 나이, 키, 몸무게, 성별... 
 	public String name;
 	public int age;
-	public float height;
+	protected float height;
 	float weight;
 	
 	public Person() {}  // 기본 생성자
@@ -47,6 +47,25 @@ public class Person {
 	public String getDetails() {
 		return "[이름: " + name + "\t나이: "+ age + "\t키: " + height + "\t몸무게: " + weight +"]";
  	}
+
+	public Person(String name, int age, float height, float weight) {
+		this.name = name;
+		this.age = age;
+		this.height = height;
+		this.weight = weight;
+	}
+
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	public Person(int age, String name) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	
 	
 	
 	
