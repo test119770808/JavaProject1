@@ -78,9 +78,23 @@ public class CustomerManager {
 				break;
 			case 'ㅕ':
 			case 'u':
+				System.out.println("데이터를 수정합니다.");
+				if((index>=0) && (index < count)) {
+					System.out.println(index + "번째 데이터를 수정합니다.");
+					updateCustomerData(index);
+				}else {
+					System.out.println("수정할 데이터가 선택되지 않았습니다.");
+				}
 				break;
 			case 'ㅇ':
 			case 'd':
+				System.out.println("데이터를 삭제합니다.");
+				if ((index>=0) && (index < count)) {
+					System.out.println(index + "번째 데이터를 삭제합니다.");
+					deleteCustomerData(index);
+				}else {
+					System.out.println("삭제할 데이터가 선택되지 않았습니다.");
+				}
 				break;
 			case 'ㅂ':
 			case 'q':  //종료
@@ -122,34 +136,31 @@ public class CustomerManager {
 	
 	public static void printCustomerData(int index) {
 		System.out.println("==========CUSTOMER INFO==========");
-		System.out.println("이름 : "+nameList[index]);
-		System.out.println("성별 : "+genderList[index]);
-		System.out.println("이메일 : "+emailList[index]);
-		System.out.println("출생년도 : "+birthYearList[index]);
+		System.out.println("이름 : "+cusList[index].getName());
+		System.out.println("성별 : "+cusList[index].getGender());
+		System.out.println("이메일 : "+cusList[index].getEmail());
+		System.out.println("출생년도 : "+cusList[index].getBirthYear());
 		System.out.println("=================================");
 	}
 	
 	public static void updateCustomerData(int index) {
 		System.out.println("-------UPDATE CUSTOMER INFO-------");
-		System.out.print("이름("+nameList[index]+") :");
+		System.out.print("이름("+cusList[index].getName()+") :");
 		String name = scan.nextLine();
 		if(name.length() != 0) {  // 검증... 
-			nameList[index] = name;
+			cusList[index].setName(name);
 		}
-		System.out.print("성별("+genderList[index]+") : ");
-		genderList[index] = scan.next();
-		System.out.print("이메일("+emailList[index]+") : ");
-		emailList[index] = scan.next();
-		System.out.print("출생년도("+birthYearList[index]+") : ");
-		birthYearList[index] = scan.nextInt();
+		System.out.print("성별("+cusList[index].getGender()+") : ");
+		cusList[index].setGender(scan.next());
+		System.out.print("이메일("+cusList[index].getEmail()+") : ");
+		cusList[index].setEmail(scan.next());
+		System.out.print("출생년도("+cusList[index].getBirthYear()+") : ");
+		cusList[index].setBirthYear(scan.nextInt());
 	}
 	
 	public static void deleteCustomerData(int index) {
 		for (int i = index; i < count - 1; i++) {
-			nameList[i] = nameList[i + 1];
-			genderList[i] = genderList[i + 1];
-			emailList[i] = emailList[i + 1];
-			birthYearList[i] = birthYearList[i + 1];
+			cusList[i] = cusList[i + 1];
 		}
 		count --;
 	}
