@@ -66,6 +66,52 @@ class Circle extends Shape {
 }
 
 // shape를 부모로 하는 사각형(rectangle), 삼각형(triangle) 클래스를 만들어 보세요... 
+class Rectangle extends Shape {
+
+	int width;
+	int height;
+	
+	public Rectangle(int width, int height) {
+		this(0, 0, width, height);
+	}
+
+	public Rectangle(int x, int y,int width, int height) {
+		super(x, y);
+		this.width = width;
+		this.height = height;
+	}
+
+	@Override
+	public double getArea() {
+		return width * height;
+	}
+	
+}
+
+class Triangle extends Shape {
+	
+	int width;
+	int height;
+
+	public Triangle(int width, int height) {
+		this(0, 0, width, height);
+	}
+
+	public Triangle(int x, int y, int width, int height) {
+		super(x, y);
+		this.width = width;
+		this.height = height;
+	}
+
+	@Override
+	public double getArea() {
+		// TODO Auto-generated method stub
+		return (width * height)/2;
+	}
+	
+}
+
+
 
 
 public class C10_abstract {
@@ -75,6 +121,16 @@ public class C10_abstract {
 		
 		System.out.println("원의 넓이는 : "+circle.getArea());
 		System.out.println("도형의 위치는 : "+circle.postion());
+		
+		Shape rectangle = new Rectangle(10, 5);
+		System.out.println("사각형의 넓이는 : "+rectangle.getArea());
+		
+		Shape triangle = new Triangle(20, 5);
+		System.out.println("삼각형의 넓이는 : "+triangle.getArea());
+		
+		
+		
+		
 	}
 
 }
