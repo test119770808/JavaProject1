@@ -37,6 +37,40 @@ class Circle extends Shape {
 	
 }
 
+class Rectangle extends Shape {
+	private int radius;
+
+	public Rectangle() {
+	}
+	
+	public Rectangle(int x, int y) {
+		super(x, y);
+	}
+
+	@Override
+	public double getArea() {
+		return 0;
+	}
+	
+}
+
+class Triangle extends Shape {
+
+	
+	public Triangle() {
+		
+	}
+	public Triangle(int x, int y) {
+		super(x, y);
+	}
+	
+	@Override
+	public double getArea() {
+		return 0;
+	}
+	
+}
+
 public class C10_abstract {
 	public static void main(String[] args) {
 		Shape circle = new Circle(10);
