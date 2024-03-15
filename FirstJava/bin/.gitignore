@@ -40,3 +40,6 @@
 /C00_GarbageCollectingEx.class
 /C00_ReferencPriExample.class
 /C06_static.class
+/C06_static_init.class
+/InstanceInit.class
+/StaticInit.class
