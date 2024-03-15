@@ -65,6 +65,10 @@ public class Person {
 		this.age = age;
 	}
 	
+	public void walk() {
+		System.out.println(name + "는 걸어가요!");
+	}
+	
 	
 	// Object 메서드 오버라이드 hashCode() - 객체 동등 비교를 위해서 값 생성하는 메서드
 //	@Override

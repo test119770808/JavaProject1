@@ -1,5 +1,8 @@
 
-
+import obj.inheritance.Person;
+import obj.inheritance.goodcase.Employee;
+import obj.inheritance.goodcase.Student;
+import obj.inheritance.goodcase.Teacher;
 
 /*   다형성
  *    - 여러가지 형태를 가지는 성질을 의미함.
@@ -23,7 +26,37 @@
 public class C08_polymorphism {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 다형성 테스트 
+		Person p = new Student("홍길동", 17, "20240315", "도술");
+		// 오버라이드 된 메서드의 실행... 
+		System.out.println(p.getDetails());  // 오버라이드 된 내용은 자식의 내용을 출력!
+		Person pO = new Person("이순신", 40);
+		System.out.println(pO.getDetails());
+		p.walk(); //상속받은 메서드 실행... 
+//		p.study();  // p는 다형적 객체이기 때문에 부모 클래스에 있는 메서드만 사용할 수 있어요.
+		Student casting = (Student)p;
+		// study() 사용해야 하는 경우에는 Student로 캐스팅이 되어야 사용이 가능해요.
+		casting.study();
+		
+		////// 
+		Person p2;
+		p2 = new Teacher("홍선생", 22, "Java Programming!!!");
+		// instanceof 연산자는 좌항의 객체와 우항의 클래스를 비교!
+		System.out.println(p2 instanceof Person);
+		System.out.println(p2 instanceof Teacher);
+		System.out.println(p2 instanceof Student);
+		System.out.println(p2.getDetails());
+		
+		p2 = new Employee("홍사원", 25, "교무처");
+		// instanceof 연산자는 좌항의 객체와 우항의 클래스를 비교!
+		System.out.println(p2 instanceof Person);
+		System.out.println(p2 instanceof Employee);
+		System.out.println(p2.getDetails());
+		
+		p2 = new Student("홍길동", 17, "20240315", "도술");
+		System.out.println(p2 instanceof Person);
+		System.out.println(p2 instanceof Student);
+		System.out.println(p2.getDetails());
 
 	}
 

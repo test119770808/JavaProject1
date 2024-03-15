@@ -50,6 +50,11 @@ public class Student extends Person {
 		this.major = major;
 	}
 
+	
+	public void study() {
+		System.out.println(name +"은/는 공부합니다.");
+	}
+	
 	// Overriding이란? 
 	//  부모 클래스로부터 상속받은 메서드를 자식 클래스에서 행위(Method)를 바꾸거나 보완하기
 	// 위해서 다시 정의해서 사용하는 것 (재정의)
