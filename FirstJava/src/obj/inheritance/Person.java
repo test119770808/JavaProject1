@@ -67,15 +67,15 @@ public class Person {
 	
 	
 	// Object 메서드 오버라이드 hashCode() - 객체 동등 비교를 위해서 값 생성하는 메서드
-	@Override
-	public int hashCode() {
-		// 특정 값을 기준으로 확인하기 위해서 메서드 수정!! (이름과 나이를 기준으로)
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + age;
-		result = prime * ((name == null)? 0 : name.hashCode());
-		return result;
-	}
+//	@Override
+//	public int hashCode() {
+//		// 특정 값을 기준으로 확인하기 위해서 메서드 수정!! (이름과 나이를 기준으로)
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + age;
+//		result = prime * ((name == null)? 0 : name.hashCode());
+//		return result;
+//	}
 	
 	// 동일 객체 판단... 객체의 값을 이용... 
 	@Override
