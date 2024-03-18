@@ -52,7 +52,7 @@ class TV1 extends Machine{
 }
 
 
-public class Quiz1_230318_PM {
+public class Quiz1_240318_PM {
 
 	public static void main(String[] args) {
 		Machine tv = new TV1("TV");
