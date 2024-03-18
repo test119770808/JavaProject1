@@ -59,6 +59,7 @@ public class Quiz1_230318_PM {
 		Machine computer = new Machine();
 		computer.setName("컴퓨터");
 		
+		// TV 구동
 		Machine.machineWork(new Remocon() {
 			
 			@Override
@@ -72,6 +73,7 @@ public class Quiz1_230318_PM {
 			}
 		}, tv);
 		
+		// computer 구동
 		Machine.machineWork(new Remocon() {
 			
 			@Override
