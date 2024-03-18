@@ -51,6 +51,9 @@ class Buyer {
 			if (cart[i] == null) {
 				return;
 			}
+			if (!(cash >= cart[i].getPrice())) {
+				return;
+			}
 
 			addToTrunk(cart[i]);
 			cash = cash - cart[i].getPrice();
