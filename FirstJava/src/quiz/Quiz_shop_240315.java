@@ -28,8 +28,8 @@ class Buyer {
 	private int before_cash;
 	private int index = 0;
 	private int max_index = 5;
-	private int trunk_index = 0;
 	private int trunk_max_index = 5;
+	private int trunk_index = 0;
 	private int cart_index;
 	private Product[] cart = new Product[max_index];
 	private Product[] trunk = new Product[trunk_max_index];
