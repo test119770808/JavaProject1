@@ -128,9 +128,6 @@ public class C10_abstract {
 		Shape triangle = new Triangle(20, 5);
 		System.out.println("삼각형의 넓이는 : "+triangle.getArea());
 		
-		
-		
-		
 	}
 
 }
