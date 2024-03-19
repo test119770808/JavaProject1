@@ -18,9 +18,9 @@ public class CustomerManager {
 	static Customer[] cusList = new Customer[MAX];
 	
 	// 배열을 참조하기 위해서 인덱스를 사용... 
-	static int index = -1;
+//	static int index = -1;
 	
-	static int count = 0;    // 고객 정보 저장 개수
+	static int count;    // 고객 정보 저장 개수
 	
 	static Scanner scan = new Scanner(System.in);
 
@@ -28,9 +28,9 @@ public class CustomerManager {
 		
 		while(true) {
 			// 고객 메뉴 ui(TEXT UI)
-			System.out.printf("\n[INFO] 고객 수 : %d, 인덱스 : %d\n", count, index);
+			System.out.printf("\n[INFO] 고객 수 : %d\n", count);
 			System.out.println("메뉴를 입력하세요.");
-			System.out.println("(I)nsert, (P)revious, (N)ext, (C)urrent, (U)pdate, (D)elete, (Q)uit");
+			System.out.println("(I)nsert, (S)elect, (U)pdate, (D)elete, (Q)uit");
 			System.out.print("메뉴 입력 : ");
 			String menu = scan.next();
 			menu = menu.toLowerCase();  // 대소문자 구분X 
@@ -47,31 +47,11 @@ public class CustomerManager {
 					System.out.println("고객 정보를 저장했습니다.");
 				}
 				break;
-			case 'ㅔ':
-			case 'p':  // previous
-				System.out.println("이전 데이터를 출력합니다.");
-				if(index <= 0) {  //이전 데이터가 존재하지 않는 경우
-					System.out.println("이전 데이터가 존재하지 않습니다.");
-				}else {
-					index --;
-					printCustomerData(index);
-				}
-				break;
-			case 'ㅜ':
-			case 'n':
-				System.out.println("다음 데이터를 출력합니다.");
-				if(index >= count - 1) {
-					System.out.println("다음 데이터가 존재하지 않습니다.");
-				}else {
-					index ++;
-					printCustomerData(index);
-				}
-				break;
-			case 'ㅊ':
-			case 'c':
-				System.out.println("현재 데이터를 출력합니다.");
-				if((index >= 0)&&(index < count)) {
-					printCustomerData(index);
+			case 's':
+			case 'ㄴ':
+				System.out.println("데이터를 출력합니다.");
+				if(count > 0) {
+					printCustomerData(selectCustomerData());
 				}else {
 					System.out.println("출력할 데이터가 선택되지 않았습니다.");
 				}
@@ -79,9 +59,8 @@ public class CustomerManager {
 			case 'ㅕ':
 			case 'u':
 				System.out.println("데이터를 수정합니다.");
-				if((index>=0) && (index < count)) {
-					System.out.println(index + "번째 데이터를 수정합니다.");
-					updateCustomerData(index);
+				if(count > 0) {
+					updateCustomerData(selectCustomerData());
 				}else {
 					System.out.println("수정할 데이터가 선택되지 않았습니다.");
 				}
@@ -89,9 +68,8 @@ public class CustomerManager {
 			case 'ㅇ':
 			case 'd':
 				System.out.println("데이터를 삭제합니다.");
-				if ((index>=0) && (index < count)) {
-					System.out.println(index + "번째 데이터를 삭제합니다.");
-					deleteCustomerData(index);
+				if (count > 0) {
+					deleteCustomerData(selectCustomerData());
 				}else {
 					System.out.println("삭제할 데이터가 선택되지 않았습니다.");
 				}
@@ -134,34 +112,52 @@ public class CustomerManager {
 		
 	}
 	
-	public static void printCustomerData(int index) {
+	public static Customer selectCustomerData() {
+		while (true) {
+			System.out.println("출력, 수정 또는 삭제할 사람의 이름을 입력하세요.");
+			String name = scan.next();
+			for (int i = 0; i < count; i++) {
+				if(cusList[i].getName().equals(name)) {
+					return cusList[i];
+				}
+			}
+			System.out.println("입력하신 이름을 가진 데이터가 없습니다.");
+		}
+	}
+	
+	public static void printCustomerData(Customer cus) {
 		System.out.println("==========CUSTOMER INFO==========");
-		System.out.println("이름 : "+cusList[index].getName());
-		System.out.println("성별 : "+cusList[index].getGender());
-		System.out.println("이메일 : "+cusList[index].getEmail());
-		System.out.println("출생년도 : "+cusList[index].getBirthYear());
+		System.out.println("이름 : "+cus.getName());
+		System.out.println("성별 : "+cus.getGender());
+		System.out.println("이메일 : "+cus.getEmail());
+		System.out.println("출생년도 : "+ cus.getBirthYear());
 		System.out.println("=================================");
 	}
 	
-	public static void updateCustomerData(int index) {
+	public static void updateCustomerData(Customer cus) {
 		System.out.println("-------UPDATE CUSTOMER INFO-------");
-		System.out.print("이름("+cusList[index].getName()+") :");
+		System.out.print("이름("+cus.getName()+") :");
 		String name = scan.next();
 		if(name.length() != 0) {  // 검증... 
-			cusList[index].setName(name);
+			cus.setName(name);
 		}
-		System.out.print("성별("+cusList[index].getGender()+") : ");
-		cusList[index].setGender(scan.next());
-		System.out.print("이메일("+cusList[index].getEmail()+") : ");
-		cusList[index].setEmail(scan.next());
-		System.out.print("출생년도("+cusList[index].getBirthYear()+") : ");
-		cusList[index].setBirthYear(scan.nextInt());
+		System.out.print("성별("+cus.getGender()+") : ");
+		cus.setGender(scan.next());
+		System.out.print("이메일("+cus.getEmail()+") : ");
+		cus.setEmail(scan.next());
+		System.out.print("출생년도("+cus.getBirthYear()+") : ");
+		cus.setBirthYear(scan.nextInt());
 	}
 	
-	public static void deleteCustomerData(int index) {
-		for (int i = index; i < count - 1; i++) {
-			cusList[i] = cusList[i + 1];
+	public static void deleteCustomerData(Customer cus) {
+		for (int i = 0; i < count - 1; i++) {
+			if(cusList[i].getName().equals(cus.getName())) {
+				for (int j = i; j < count; j++) {
+					cusList[j] = cusList[j+1];
+				}
+			}
 		}
+		System.out.println("데이터가 삭제되었습니다.");
 		count --;
 	}
 	
