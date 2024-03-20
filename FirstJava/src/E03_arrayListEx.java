@@ -43,16 +43,21 @@ public class E03_arrayListEx {
 		System.out.println(idx);
 		System.out.println("================================");
 		// remove(index) : 그 위치의 데이터를 삭제하면서 값을 반환
-		// remove(Object) : 해당 데이터를 삭제하고 그 결과를 반환.
+		// remove(Object) : 해당 데이터를 삭제하고 그 결과를 반환(true/false).
 		System.out.println(list.remove(list.indexOf("홍길동")));	
 		System.out.println(list.remove(0));
 		System.out.println(list.remove("홍길동"));
 		
-		// contains
-		// toString
-		// toArray
-		// clear
+		// contains : 값을 포함하고 있는지 여부를 반환
+		System.out.println(list.contains("홍길동"));
 		
+		// toString
+		System.out.println(list.toString());
+		// toArray
+		Object[] arr = list.toArray();
+				
+		// clear
+		list.clear();
 
 	}
 
