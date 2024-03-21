@@ -1,8 +1,14 @@
 package obj;
 
-public class Dog {
+public class Dog implements Comparable<Dog>{
 	
 	// 객체 동등 비교를 위한 Dog 클래스... 
+	
+	@Override
+	public int compareTo(Dog o) {
+		// 두 객체간에 비교 값을 지정... 
+		return this.weight - o.weight;
+	}
 	
 	//멤버 변수
 	String dogId;
