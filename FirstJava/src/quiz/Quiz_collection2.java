@@ -33,8 +33,6 @@ public class Quiz_collection2 {
 			if(que.size() == 1) return -1;
 		}
 		
-		
-//		return answer;
 	}
 
 }
