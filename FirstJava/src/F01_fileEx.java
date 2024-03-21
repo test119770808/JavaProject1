@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.IOException;
 
 public class F01_fileEx {
 	
@@ -50,7 +51,37 @@ public class F01_fileEx {
 		for (String p : path) {
 			System.out.println(p);
 		}
+		
+		// 파일에 대한 생성/수정/삭제 메서드
+		
+		File test = new File("D:\\FileTest\\temp\\abc");
+		// mkdir : 해당 경로에 폴더 생성. 단... 경로상 없는 폴더가 없어야 합니다.
+		// mkdirs : 존재하지 않는 부모 폴더까지 모두 포함하여 폴더를 생성.
+		if (!test.exists()) {  // 파일 폴더가 존재하지 않는 경우... 
+			test.mkdirs();
+		}
+		
+		// createNewFile() : 파일이 없으면 새로 생성
+		test = new File("D:/FileTest/temp/a.txt");
+		try {
+			test.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("파일 생성 중 에러가 발생하였습니다.");
+		}
+		
+		// delete : 파일 혹은 폴더를 삭제한다. 단, 폴더는 비어있지 않으면 삭제할 수 없다.
+		test = new File("D:/FileTest/temp/abc");
+		test.delete();
+//		test = new File("D:/FileTest/temp/a.txt");
+//		test.delete();
+//		test = new File("D:/FileTest/temp");
+//		test.delete();
 
+		// renameTo : 파일이나 폴더의 이름 및 경로를 변경합니다.
+		test = new File("D:/FileTest/temp");
+		File dst = new File("D:/FileTest/temp222");
+		test.renameTo(dst);
 	}
 
 }
