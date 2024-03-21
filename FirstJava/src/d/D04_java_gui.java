@@ -1,4 +1,3 @@
-
 /*
  *   JAVA GUI란?
  *    - 프로그램을 그래픽화(프레임창)시켜 작동 시키는 것. 
@@ -10,6 +9,8 @@
  *    창별로 달라지기 때문에 개별 클래스화 한다면 여러 측면에서 낭비 -> 내부 클래스 사용.
  *    
  */
+package d;
+
 
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;

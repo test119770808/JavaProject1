@@ -1,4 +1,3 @@
-
 /*
  # 인터페이스 
 
@@ -41,6 +40,8 @@ public class Mermaid extends Human implements Aquatic {
  - 반드시 인터페이스 내에 모든 메서드를 구현해야 합니다. 
 
  */
+package d;
+
 
 interface ShapeInterface {
 	

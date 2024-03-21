@@ -1,3 +1,4 @@
+package d;
 import interface_.ISomething;
 
 public class D03_interfaceEx3 implements ISomething {

@@ -1,3 +1,4 @@
+package d;
 import java.io.IOException;
 
 public class D07_checkedExceptionEx {

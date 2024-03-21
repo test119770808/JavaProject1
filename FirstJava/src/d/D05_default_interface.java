@@ -1,3 +1,4 @@
+package d;
 
 
 interface MyInterface1 {

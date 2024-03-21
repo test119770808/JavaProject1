@@ -1,3 +1,4 @@
+package d;
 
 public class D07_tryCatchEx {
 

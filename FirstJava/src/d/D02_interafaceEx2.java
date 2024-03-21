@@ -1,4 +1,3 @@
-
 /*
  *  인터페이스 정리
  *  - 단일 상속 문제를 해결할 수 있음.
@@ -9,6 +8,8 @@
  *  *** 기능의 명세를 위해서 사용(프로그램의 구조를 기술하기 때문) *** * 
  * 
  */
+package d;
+
 
 import interface_.ToDo;
 import interface_.ToDo3;
