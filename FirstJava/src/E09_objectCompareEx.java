@@ -25,8 +25,13 @@ public class E09_objectCompareEx {
 			System.out.println(dog);
 		}
 		
+		// Comparator를 이용한 경우... 
 		TreeSet<Dog> treeTest2 = new TreeSet<Dog>(new DogComparator());
-		
+		System.out.println(treeTest2.add(d1));
+		System.out.println(treeTest2.add(d2));
+		for (Dog dog: treeTest2) {
+			System.out.println(dog);
+		}
 		
 	}
 
