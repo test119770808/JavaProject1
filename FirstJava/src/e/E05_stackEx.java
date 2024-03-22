@@ -1,3 +1,4 @@
+package e;
 import java.util.Stack;
 
 public class E05_stackEx {

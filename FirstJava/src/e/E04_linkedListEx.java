@@ -1,3 +1,4 @@
+package e;
 import java.util.LinkedList;
 
 public class E04_linkedListEx {

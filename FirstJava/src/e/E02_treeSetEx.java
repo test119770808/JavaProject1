@@ -1,3 +1,4 @@
+package e;
 import java.util.TreeSet;
 
 public class E02_treeSetEx {

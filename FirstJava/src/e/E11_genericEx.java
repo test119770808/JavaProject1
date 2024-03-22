@@ -1,3 +1,4 @@
+package e;
 import generic.Person;
 
 public class E11_genericEx {
