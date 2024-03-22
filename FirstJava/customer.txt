@@ -1,0 +1,2 @@
+홍길동,M,hong@naver.com,1589
+강감찬,M,kang@naver.com,879
