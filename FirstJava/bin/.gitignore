@@ -151,3 +151,6 @@
 /F09_textReadApplication.class
 /F10_dataWriteApplication.class
 /F11_dataReadApplication.class
+/util/
+/F12_writeCustomerEx.class
+/F13_readCustomerEx.class
