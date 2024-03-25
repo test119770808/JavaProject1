@@ -1,3 +1,4 @@
+package f;
 import java.io.FileOutputStream;
 
 public class F08_textWriteApplication {
