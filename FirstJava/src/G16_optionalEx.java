@@ -62,7 +62,7 @@ public class G16_optionalEx {
 		int max2 = list2.stream().mapToInt(Integer::intValue).max().orElse(0);
 		System.out.println("요소들 중 최대 값 : "+max2);
 		
-		int min2 = list2.stream().mapToInt(Integer::intValue).max().orElse(-1);
+		int min2 = list2.stream().mapToInt(Integer::intValue).min().orElse(-1);
 		System.out.println("요소들 중 최소 값 : "+min2);
 		
 		//요소가 존재하면 실행 ifPresent()
