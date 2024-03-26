@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import javax.naming.directory.BasicAttributes;
 
-public class G10_StreamEx3 {
+public class G10_streamEx3 {
 	
 	/*
 	 *  외부 파일에서 스트림 생성하기
@@ -57,7 +57,7 @@ public class G10_StreamEx3 {
 						File file1 = p.toFile();
 						// 디렉터리가 아니고, 파일 이름에 Stream이 포함된 파일명
 						return !file1.isDirectory() && 
-								file1.getName().contains("stream");
+								file1.getName().contains("Ex");
 					});
 			sr2.forEach(p -> System.out.println(p.getFileName()));
 		} catch (Exception e) {
