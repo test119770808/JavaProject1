@@ -68,6 +68,34 @@ public class G16_optionalEx {
 		//요소가 존재하면 실행 ifPresent()
 		list2.stream().mapToInt(Integer::intValue).findFirst()
 					.ifPresent(a -> System.out.println("요소의 첫번째 값 : "+a));
+		
+		
+		// 사용자 집계 메서드 - reduce() 메서드 
+		// 사용자가 다양한 집계 결과물을 생성할 수 있는 메서드
+		//  reduce메서드는 매개변수 타입이 XXXOperator를 이용하고, 
+		// Stream, IntStream, LongStream, DoubleStream을 전달
+		Shape s1 = new Rectangle(10, 3);
+		Shape s2 = new Circle(10);
+		Shape s3 = new Rectangle(20, 2);
+		Shape s4 = new Circle(11);
+		
+		List<Shape> list = Arrays.asList(s1, s2, s3, s4);
+		
+		double areaSum = list.stream().mapToDouble(Shape::area).sum();
+		System.out.println("sum()를 이용한 면접 합계 : "+areaSum);
+		
+		areaSum = list.stream().mapToDouble(Shape::area)
+				.reduce((a, b) -> a+b).getAsDouble();
+		System.out.println("reduce(Operator)를 이용한 면적 합계 : "+areaSum);
+		
+		areaSum = list.stream().mapToDouble(Shape::area)
+				.reduce(0, (a,b) -> a+b);
+		System.out.println("reduce(0, Operator)를 이용한 면적 합계 : "+areaSum);
+		
+		
+		
+		
+		
 
 	}
 
