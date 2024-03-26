@@ -44,6 +44,22 @@ public class G13_sortingEx {
 		list2.stream().sorted(Comparator.reverseOrder())
 					.forEach(System.out::println);
 		
+		
+		// 둘레를 기준으로 정렬
+		System.out.println("정렬하지 않고 출력");
+		list2.stream().forEach(System.out::println);
+		
+		System.out.println("둘레(length()) 순으로 정렬");
+		System.out.println("함수적 인터페이스로 구현");
+		list2.stream().sorted(new Comparator<Shape>() {
+			public int compare(Shape o1, Shape o2) {
+				return (int)(o1.length() - o2.length());
+			};
+		}).forEach(System.out::println);
+		
+		System.out.println("람다표현식을 이용해서 둘레순으로 정렬");
+		list2.stream().sorted((a,b) -> (int)(b.length() - a.length()))
+					.forEach(System.out::println);
 	}
 
 }
