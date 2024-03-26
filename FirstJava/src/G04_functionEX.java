@@ -1,4 +1,6 @@
 import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
 
 import obj.inheritance.goodcase.Student;
 
@@ -31,9 +33,36 @@ public class G04_functionEX {
 		printString(t -> t.getMajor());
 		System.out.print("나이 : ");
 		printInt(t -> t.age);
-	    
-
+	    System.out.print("나이 합계 : ");
+	    printTot(t -> t.age);
+	    System.out.print("나이 평균 : ");
+	    printAvg(t -> t.age);
+	    printAvg();
 	}
+	static void printAvg() {
+		ToDoubleFunction<Student> f = t -> t.age;
+		double sum = 0;
+		for (Student s:list) {
+			sum += f.applyAsDouble(s);
+		}
+		System.out.println(sum /list.length);
+	}
+	static void printAvg(ToDoubleFunction<Student> f) {
+		double sum = 0;
+		for (Student s:list) {
+			sum += f.applyAsDouble(s);
+		}
+		System.out.println(sum /list.length);
+	}
+	
+	static void printTot(ToIntFunction<Student> f) {
+		int sum = 0;
+		for (Student s : list) {
+			sum += f.applyAsInt(s);
+		}
+		System.out.println(sum);
+	}
+	
 	// Function<Student, Integer> f = t -> t.age ;
 	static void printInt(Function<Student, Integer> f) {
 		for(Student s: list) {
