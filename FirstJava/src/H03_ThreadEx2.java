@@ -35,7 +35,7 @@ public class H03_ThreadEx2 {
 //					try {
 //						Thread.sleep(1000);  //1초
 //					} catch (InterruptedException e) {
-//						System.out.println(e.getMessage());
+//						System.out.println("thread: "+e.getMessage());
 ////						System.exit(0);
 //					}
 				}
@@ -50,26 +50,49 @@ public class H03_ThreadEx2 {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			System.out.println(e.getMessage());
+			System.out.println("main() : "+e.getMessage());
 		}
 		t1.interrupt();  // 스레드가 일시 정지 상태이면 예외 발생. sleep interrupted
 		
-		// join() 메서드
-		Sum t2 = new Sum();
-		Sum t3 = new Sum();
+//		// join() 메서드
+//		Sum t2 = new Sum();
+//		Sum t3 = new Sum();
+//		
+//		t2.start();
+//		t3.start();
+//		try {
+//			t2.join();   // t1 스레드가 종료될때까지 대기
+//			t3.join();   // t2 스레드가 종료될때까지 대기
+//		} catch (InterruptedException e) {
+//			System.out.println(e.getMessage());
+//		}
+//		System.out.println("두 스레드의 Sum의 합계 : "+(t2.sum + t3.sum));
+//		
 		
-		t2.start();
-		t3.start();
+		//yeild() : 다른 스레드에게 실행 양보
+		YieldThread t4 = new YieldThread();
+		YieldThread t5 = new YieldThread();
+		
+		t4.start();
+		t5.start();
 		try {
-			t2.join();   // t1 스레드가 종료될때까지 대기
-			t3.join();   // t2 스레드가 종료될때까지 대기
-		} catch (InterruptedException e) {
-			System.out.println(e.getMessage());
-		}
-		System.out.println("두 스레드의 Sum의 합계 : "+(t2.sum + t3.sum));
+			Thread.sleep(1);
+		} catch (InterruptedException e) {}
 		
+		t4.isContinue = false;   // t4 스레드 yield(). 즉, 양보
 		
-		//yeild() 
+		try {
+			Thread.sleep(1);
+		} catch (InterruptedException e) {}
+		t4.isContinue = true;    // t4 다시 실행
+		
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {}
+		
+		// 스레드 종료... 
+		t4.isBreak = true;
+		t5.isBreak = true;
 		
 	}
 
@@ -84,3 +107,24 @@ class Sum extends Thread {
 		}
 	}
 }
+
+class YieldThread extends Thread {
+	boolean isBreak = false;
+	boolean isContinue = true;
+	
+	@Override
+	public void run() {
+		while(!isBreak) {
+			if(isContinue) {
+				System.out.println(getName()+" 실행 중");
+			}else {
+//				System.out.println("yield 실행");
+				Thread.yield();    // 자원 양보... 효율적인 자원 사용을 위해서 사용
+			}
+		}
+		System.out.println(getName() + " 종료");
+	}
+}
+
+
+
