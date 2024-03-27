@@ -2,10 +2,25 @@
 public class H05_threadEx4 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 통장 객체 생성
+		Account acc = new Account();
+		
+		// 엄마 스레드 객체 생성
+		Mother mother = new Mother(acc);
+		// 아들 스레드 객체 생성
+		Son son = new Son(acc);
+		
+		mother.start();
+		son.start();
+		
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {}
 
+		// 스레드 중지
+		son.interrupt();
+		mother.interrupt();
 	}
-
 }
 
 // 통장 클래스
