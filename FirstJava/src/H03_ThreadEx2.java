@@ -69,7 +69,7 @@ public class H03_ThreadEx2 {
 //		System.out.println("두 스레드의 Sum의 합계 : "+(t2.sum + t3.sum));
 //		
 		
-		//yeild() : 다른 스레드에게 실행 양보
+		//yeild() : 다른 스레드에게 실행 양보(자원)
 		YieldThread t4 = new YieldThread();
 		YieldThread t5 = new YieldThread();
 		
@@ -118,7 +118,6 @@ class YieldThread extends Thread {
 			if(isContinue) {
 				System.out.println(getName()+" 실행 중");
 			}else {
-//				System.out.println("yield 실행");
 				Thread.yield();    // 자원 양보... 효율적인 자원 사용을 위해서 사용
 			}
 		}
