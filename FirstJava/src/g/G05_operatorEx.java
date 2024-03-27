@@ -1,3 +1,4 @@
+package g;
 import java.util.function.DoubleBinaryOperator;
 import java.util.function.IntBinaryOperator;
 

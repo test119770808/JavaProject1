@@ -1,3 +1,4 @@
+package g;
 
 public class G01_lambdaFunctionEx {
 

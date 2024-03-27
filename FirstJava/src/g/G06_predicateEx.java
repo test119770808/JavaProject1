@@ -1,3 +1,4 @@
+package g;
 import java.util.function.Predicate;
 
 public class G06_predicateEx {
