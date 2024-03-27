@@ -65,7 +65,7 @@ public class H02_threadEx {
 		t2.start();
 		t3.start();
 		t4.start();
-		System.out.println("main thread 종료");
+		System.out.println("main 메서드 종료");
 	}
 
 }
