@@ -28,12 +28,41 @@ public class H07_threadEx7 {
 
 	public static void main(String[] args) {
 		// 그룹 스레드 설정
+		// 1. 그룹 객체 생성
+		ThreadGroup group = new ThreadGroup("Group1");
+		// 2. 스레드 그룹에 스레드 추가
+		MyThread t1 = new MyThread(group,"First");
+		MyThread t2 = new MyThread(group,"Second");
+		MyThread t3 = new MyThread(group,"Third");
+		
+		t1.start();
+		t2.start();
+		t3.start();
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {}
+		
+		// 모든 스레드 중지
+		group.interrupt();
+		
+		System.out.println("하위 그룹 스레드 숫자 : "+group.activeCount());
+		System.out.println("하위 그룹 숫자 : "+group.activeGroupCount());
+		group.destroy();  // 하위 그룹 삭제
+		System.out.println(group.isDestroyed());
+		System.out.println(group.getParent());
+		group.list();
 
 	}
 
 }
 
 class MyThread extends Thread {
+	
+	public MyThread(ThreadGroup group, String name) {
+		super(group, name);
+	}
+	
 	@Override
 	public void run() {
 		while (true) {
