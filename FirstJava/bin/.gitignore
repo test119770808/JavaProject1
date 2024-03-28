@@ -210,3 +210,5 @@
 /I02_urlEx.class
 /I03_serverEx.class
 /HttpThread.class
+/I04_udpServerEx.class
+/I05_udpClientEx.class
