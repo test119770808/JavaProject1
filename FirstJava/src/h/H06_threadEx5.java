@@ -1,3 +1,4 @@
+package h;
 
 public class H06_threadEx5 {
 	

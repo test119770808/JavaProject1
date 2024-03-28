@@ -1,3 +1,4 @@
+package h;
 
 public class H04_ThreadEx3 {
 	
