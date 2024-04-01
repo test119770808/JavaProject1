@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class I06_JDBC {
 	
@@ -28,6 +29,27 @@ public class I06_JDBC {
 					"root1234");
 			System.out.println(conn);
 			System.out.println("데이터베이스 접속 성공!!");
+			
+			// Insert, Update, Delete - executeUpdate()  - 반환 타입이 int 
+			// 3. Statement 객체 생성... createStatement()
+			Statement stmt = conn.createStatement();
+			
+			// 4. SQL 작성
+			String sql1 = "insert into Persons (firstname, lastname, age, city)"
+					+ "values('jdbcTest','testuser13',24,'Seoul')";
+			String sql2 = "update persons set firstname='순신', lastname='이' "
+					+ "where id = 14";
+			String sql3 = "delete from persons where id = 14";
+			// 5. Statement 객체를 통해서 작성된 SQL을 실행
+			int result = stmt.executeUpdate(sql3);
+			// 성공시 : 1
+			// 실패시 : 0
+			if(result !=0) {
+				System.out.println("SQL성공");
+			}else {
+				System.out.println("SQL실패");
+			}
+		
 		} catch (ClassNotFoundException ce) {
 			System.out.println("드라이버 로드 실패");
 		} catch (SQLException sqle) {
@@ -35,10 +57,8 @@ public class I06_JDBC {
 			System.out.println(sqle.getMessage());
 		} finally {
 			try {
-				
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+				if(conn != null) conn.close();
+			} catch (Exception e) {}
 		}
 
 	}
