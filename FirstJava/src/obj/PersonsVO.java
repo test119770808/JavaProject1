@@ -68,7 +68,11 @@ public class PersonsVO {
 	}
 	
 
-	
+	@Override
+	public String toString() {
+		return "[id : "+id+", lastname : "+lastname+", firstname : "+firstname
+				+ ", age : "+age+", city : "+city+"]";
+	}
 	
 	
 
