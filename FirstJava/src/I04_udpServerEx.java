@@ -1,14 +1,26 @@
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
 
 public class I04_udpServerEx {
 
 	public static void main(String[] args) {
 		// UDP서버
 		try {
+			//멀티캐스트
+			
+			String multicastAddr = "230.0.0.1";
+			InetAddress multicastGroup = InetAddress.getByName(multicastAddr);
+			MulticastSocket socket = new MulticastSocket(9000);
+			socket.joinGroup(multicastGroup);   // 멀티 캐스트 그룹 가입!!!
+			// leaveGroup()를 사용하면 멀티캐스트 그룹 해제!
+			
 			// DatagramSocket 객체 생성
-			DatagramSocket socket = new DatagramSocket(9500);
+//			DatagramSocket socket = new DatagramSocket(9500);
+//			socket.setBroadcast(true);   브로드 캐스트
+			
+			
 			
 			DatagramPacket inPacket;
 			byte[] inMsg = null;

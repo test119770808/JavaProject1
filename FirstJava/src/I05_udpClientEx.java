@@ -13,7 +13,7 @@ public class I05_udpClientEx {
 			BufferedReader sysin = 
 					new BufferedReader(new InputStreamReader(System.in));
 			// 서버 IP 
-			InetAddress serverIP = InetAddress.getByName("127.0.0.1");
+			InetAddress serverIP = InetAddress.getByName("230.0.0.1");
 			while(true) {
 				// 한줄 읽기
 				String data = sysin.readLine();
@@ -23,7 +23,7 @@ public class I05_udpClientEx {
 				
 				// 서버로 전송 (데이터, 데이터길이, 서버IP, 포트번호)
 				DatagramPacket outPacket = 
-						new DatagramPacket(msg1, msg1.length, serverIP, 9500);
+						new DatagramPacket(msg1, msg1.length, serverIP, 9000);
 				dataSocket.send(outPacket);
 				// 소켓 닫기
 				dataSocket.close();
