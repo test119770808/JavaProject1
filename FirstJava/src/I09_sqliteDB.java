@@ -35,6 +35,51 @@ public class I09_sqliteDB {
 											+ "city text(20) default 'Seoul')";
 			int result = stmt.executeUpdate(sql);
 			System.out.println("sql 처리 결과 : "+result);
+			stmt.close();
+			
+			// CRUD 테스트 하세요~~~~
+			String insertSql = "insert into test_table(id,lastname,firstname,age,city)values"
+					+ "(1,'test1','test1',11,'Daegu')";
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(insertSql);
+			System.out.println("sql 처리 결과 : "+result);
+			stmt.close();
+			
+			String selectSql = "select * from test_table";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(selectSql);
+			while(rs.next()) {
+				System.out.println("id: "+rs.getInt("id")+", lastname: "+
+			rs.getString("lastname")+", firstname: "+rs.getString("firstname")
+			+", age: "+rs.getInt("age")+", city:"+rs.getString("city"));
+			}
+			stmt.close();
+			rs.close();
+		
+			// CRUD 테스트 하세요~~~~
+			String updateSql = "update test_table set city = 'Seoul' where id = 1";
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(updateSql);
+			System.out.println("sql 처리 결과 : "+result);
+			stmt.close();
+			
+			System.out.println("수정 결과 확인 ");
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(selectSql);
+			while(rs.next()) {
+				System.out.println("id: "+rs.getInt("id")+", lastname: "+
+			rs.getString("lastname")+", firstname: "+rs.getString("firstname")
+			+", age: "+rs.getInt("age")+", city:"+rs.getString("city"));
+			}
+			stmt.close();
+			rs.close();
+			
+			String deleteSql = "delete from test_table where id = 1";
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(deleteSql);
+			System.out.println("삭제 처리결과 : "+result);
+			stmt.close();
+			
 			
 		} catch (ClassNotFoundException ce) {
 			System.out.println("드라이버 로드 실패");
