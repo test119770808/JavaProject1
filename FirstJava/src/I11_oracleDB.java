@@ -59,7 +59,6 @@ public class I11_oracleDB {
 				System.out.println("레코드 추가 실패");
 			}
 			
-			
 		} catch (ClassNotFoundException ce) {
 			System.out.println("드라이버 로드 실패");
 		} catch (SQLException sqle){
@@ -67,7 +66,9 @@ public class I11_oracleDB {
 			System.out.println(sqle.getMessage());
 		}finally {
 			try {
-				
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
