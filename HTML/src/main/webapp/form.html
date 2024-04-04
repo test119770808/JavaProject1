@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form 태그</title>
+	</head>
+	<body>
+		<!-- form 태그는 서버에 데이터를 전송하기 위해서 사용 -->
+		<form>
+			<h2>회원가입 양식</h2>
+			<hr>
+			아이디 : <input type="text" size="10"> <br>
+			비밀번호 : <input type="password" size="10"><br>
+			
+			<!-- checkbox, radio 는 name을 같은 그룹으로 그룹핑해서 사용해요 -->
+			관심분야 : 
+			<input type="checkbox" name="intro">JAVA
+			<input type="checkbox" name="intro">JSP
+			<input type="checkbox" name="intro">SPRING
+			<input type="checkbox" name="intro">DATABASE
+			
+			<br>
+			전공 : 
+			<input type="radio" name="major">컴공
+			<input type="radio" name="major">경영
+			<input type="radio" name="major">국어 국문학
+			
+			<br>
+			년도 : 
+			<select>
+				<option>2020</option>
+				<option>2021</option>
+				<option>2022</option>
+				<option>2023</option>
+				<option>2024</option>
+			</select>
+			
+			자기소개 : <br>
+			<textarea rows="5" cols="50"></textarea>
+			<br>
+			<input type="submit" value="회원가입">
+			<input type="button" value="버튼">
+			
+		</form>
+	</body>
+</html>

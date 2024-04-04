@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<!-- 태그에 CSS 적용방법 3가지
+		1. 태그에 직접 지정하는 방법 : style 속성 	=> 지정된 태그에만 적용
+		2. head에 지정하는 방법 : <style> 태그를 사용  => 그 웹 페이지에만 적용
+		3. 외부 CSS파일을 지정하는 방법 : link 태그로 외부 CSS 파일을 지정  
+											=> 연결한 모든 페이지 적용
+	 -->
+	<head>
+		<meta charset="UTF-8">
+		<title>id/class 선택자로 표 꾸미기</title>
+		<style type="text/css">
+				
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<table border="1px" id="tab">
+			<tr>  	<!-- 1행 - 표헤더,  항목(제목) -->
+				<th id="id">학번</th>  <!-- th 제목열 -->
+				<th id="name">이름</th>
+				<th id="major">학과</th>
+				<th id="email">이메일</th>
+			</tr>
+			<tr>	<!-- 2행 -->
+				<td>20240401</td>
+				<td>홍길동</td>
+				<td>체육학과</td>
+				<td style="font-weight: bolder;font-size: 20px;">hong@naver.com</td>
+			</tr>
+			<tr class="odd">	<!-- 3행 -->
+				<td>20240402</td>
+				<td>이순신</td>
+				<td>해양학과</td>
+				<td>lee@naver.com</td>
+			</tr>
+			<tr>	<!-- 4행 -->
+				<td>20240403</td>
+				<td>강감찬</td>
+				<td>정치외교학과</td>
+				<td>kang@naver.com</td>
+			</tr>
+			<tr class="odd">	<!-- 5행 -->
+				<td>20240404</td>
+				<td>유관순</td>
+				<td>유아교육학과</td>
+				<td>you@naver.com</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+table {							/* 태그 선택자 사용 */
+	border-collapse: collapse;  /* 중복 테두리 제거 */
+	border: 3px solid black;    /* border 처리 : 두께 선타입 색상 */
+	width: 80%;					/* 폭 설정 */
+	text-align: center;			/* 글자 정렬 */
+}
+tr {
+	height: 28px;				/* 높이 설정 */
+	font-size: 13px;			/* 글 사이즈 설정 */
+}
+tr:hover {                      /* 마우스 커서가 위에 있을 때 */
+	color: white;				/* 글 색상 */
+	font-weight: bold;
+	background-color: #00ccff;  /* 배경색 설정 */
+	cursor: pointer;			/* 커서 타입 지정 */
+}
+th {
+	height: 30px;
+	font-weight: bolder;		/* 글자 두께 */
+	background-color: #e0bbd2;
+}
+/* CSS 선택자 중에 id속성은 "#"으로 표시 */
+#id { width: 15%; }
+#name { width: 10%; }
+#major { width: 25%; }
+#email { width: 50%; }
+
+/* CSS 선택자 중에 class속성은 "."으로 표시 */
+.odd {
+	background-color: #f2ff9d;
+}
