@@ -1,5 +1,16 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	// 예약 현환이 있다면 예약좌석 꺼내서 처리... 
+	List<String> list = new ArrayList<>();
+	if (application.getAttribute("seats") != null){
+		list = (List<String>)application.getAttribute("seats");
+	}
+
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,7 +31,11 @@
 			<% for(int i = 1; i <= 6; i++){ %>
 				<%=i %>
 				<% for(char c = 'A'; c <= 'Z'; c ++) { %>
-					<input type="checkbox" name="seat" value="<%=c %>-<%=i %>">
+					<%if(list.contains(c+"-"+i)) { %>
+						<input type="checkbox" name="seat" value="<%=c %>-<%=i %>" disabled>
+					<%}else { %>
+						<input type="checkbox" name="seat" value="<%=c %>-<%=i %>">
+					<%} %>
 				<%} %>				
 				<br>
 				<% if(i == 3) { %>
