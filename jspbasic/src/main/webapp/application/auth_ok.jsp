@@ -8,5 +8,13 @@
 	2. 두 값이 일치한다면, reserve.jsp로 리다이렉트
 	   두 값이 일치하지 않는다면 auth.jsp로 리다이렉트
 	*/
+	String auth = (String)session.getAttribute("auth");
+	String code = request.getParameter("code");
+	if(auth.equals(code)) {
+		response.sendRedirect("reserve.jsp");
+	}else{
+		response.sendRedirect("auth.jsp");
+	}
+	
 
 %>
