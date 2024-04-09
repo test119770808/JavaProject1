@@ -21,9 +21,43 @@
 		session.setAttribute("user_name", nick);
 		response.sendRedirect("session_welcome.jsp");
 	}else {
-		response.sendRedirect("session_login.jsp");
+		// response.sendRedirect("session_login.jsp");
+		
+		// 자바스크립트의 변수 선언
+		%>
+		<script>
+			/*
+			자바스크립트 변수 선언
+			*/
+			//var a = 1;
+			//var b = "1";
+			
+			//let c = 1;  //ES6 방식
+			//const d = "1"
+			
+			/*자바스크립 함수 */
+			//function 함수이름 (매개변수) {
+			//	함수 실행문들... 
+			//}
+			
+			//이름 = () => { }  //es6방식
+			
+			//제어 : for, if, switch, while, try... 
+			
+			//자바 스크립트에서 자주 사용되는 내장 객체 
+			//alert(); 경고창
+			//confirm(); 확인창
+			//history.go(-1); 뒤로 가기
+			//location.href = "경로";  리다이렉트
+			check();    // 함수의 호출, 선언되면 앞뒤 어디서든 사용이 가능
+			
+			function check() {
+				alert("로그인 실패했습니다."); //경고창
+				history.go(-1); //뒤로가기
+			}
+		</script>
+	<%	
 	}
-
 
 %>
 <!DOCTYPE html>
