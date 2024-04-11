@@ -33,7 +33,7 @@
 		<jsp:forward page="score_quiz04.jsp">
 			<jsp:param value="<%=avg %>" name="avg"/>
 		</jsp:forward>
-	<%} %>
+	<%}
 	
 	
 	
