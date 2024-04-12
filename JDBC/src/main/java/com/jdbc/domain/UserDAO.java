@@ -139,9 +139,58 @@ public class UserDAO {
 		return vo;
 	}
 	
+	// update 메서드
+	public int update(UserVO vo) {
+		int result = 0;
+		
+		String sql = "update user set name=?, phone1=?, phone2=?, gender=? "
+				+ "where id=?";
+		
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getPhone1());
+			pstmt.setString(3, vo.getPhone2());
+			pstmt.setString(4, vo.getGender());
+			pstmt.setString(5, vo.getId());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			} catch (Exception e) {}
+		}
+		
+		return result;
+	}
 	
-	
-	
+	// 회원 정보 삭제
+	public int delete(String id) {
+		int result = 0;
+		
+		String sql = "delete from user where id = ?";
+		
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			} catch (Exception e) {}
+		}
+		
+		return result;
+	}
 	
 	
 }

@@ -18,7 +18,7 @@
 	<body>
 		<h2>회원수정 연습</h2>
 		<form action="update_ok" method="post">
-			ID :  <input type="text" name="id" size="10" value="<%=id %>"><br>
+			ID :  <input type="text" name="id" size="10" value="<%=id %>" readonly><br>
 			PW :  <input type="password" name="pw" size="10" disabled><br>
 			이름 :  <input type="text" name="name" size="10" value="<%=vo.getName() %>"><br>
 			<select name="phone1">
@@ -36,7 +36,7 @@
 			<input type="radio" name="gender" value="w" checked>여자
 			<%} %>
 			<br>
-			<input type="submit" value="가입">
+			<input type="submit" value="수정">
 		</form>
 	</body>
 </html>
