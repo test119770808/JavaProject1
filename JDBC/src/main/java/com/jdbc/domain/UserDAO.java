@@ -102,7 +102,42 @@ public class UserDAO {
 		return result;
 	}
 
-	
+	// 회원 정보 조회
+	public UserVO getInfo(String id) {
+		UserVO vo = null;
+		
+		String sql = "select * from user where id = ?";
+		
+		try {
+			// conn객체 생성
+			conn = DriverManager.getConnection(url, user, password);
+			// pstmt 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			// sql 실행
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String name = rs.getString("name");
+				String phone1 = rs.getString("phone1");
+				String phone2 = rs.getString("phone2");
+				String gender = rs.getString("gender");
+				
+				vo = new UserVO(id, null, name, phone1, phone2, gender);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e2) {}
+		}
+		
+		return vo;
+	}
 	
 	
 	
