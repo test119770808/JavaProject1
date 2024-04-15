@@ -30,7 +30,7 @@
                         <a href="/myweb/member/member.jsp">Member</a>
                     </li>
                     <li>
-                        <a href="">BOARD</a>
+                        <a href="/myweb/board/list.board">BOARD</a>
                     </li>
                     <%if (session.getAttribute("user_id")== null) {%>
                     <li>
