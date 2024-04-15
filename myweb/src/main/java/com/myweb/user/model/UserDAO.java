@@ -153,7 +153,53 @@ public class UserDAO {
 		return vo;
 	}
 	
+	// 회원 정보 수정
+	public int update(UserVO vo) {
+		int result = 0;
+		
+		String sql = "update users set name = ?, email = ?, address = ? "
+				+ "where id = ?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getEmail());
+			pstmt.setString(3, vo.getAddress());
+			pstmt.setString(4, vo.getId());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
 	
+	// 패스워드 변경 메서드 
+	public int changePassword(String id, String newPw) {
+		int result = 0;
+		
+		String sql = "update users set pw = ? where id = ?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPw);
+			pstmt.setString(2, id);
+	
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
 	
 	
 }
