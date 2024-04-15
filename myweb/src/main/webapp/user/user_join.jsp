@@ -75,7 +75,7 @@
 			if ( document.regform.id.value == '') {
 				alert("아이디는 필수 사항입니다.");
 				return;
-			}else if( document.regform.id.value < 4 || document.regform.id.value > 8) {
+			}else if( document.regform.id.value.length < 4 || document.regform.id.value.length > 8) {
 				alert("아이디는 4글자 이상 8글자 이하로 입력해주세요");
 				return;
 			}else if( document.regform.pw.value == ''){

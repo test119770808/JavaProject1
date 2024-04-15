@@ -8,6 +8,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.myweb.util.JdbcUtil;
+
 public class UserDAO {
 	
 	/*
@@ -40,6 +42,63 @@ public class UserDAO {
 	ResultSet rs = null;
 	
 	// 메서드들..... 
+	// 중복확인 메서드
+	public int IdConfirm(String id) {
+		int result = 0;
 	
-
+		String sql = "select * from users where id = ?";
+		
+		try {
+			// Connection Pool
+			conn = ds.getConnection();
+			
+			// PreparedStatement 
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			// SQL 실행
+			rs = pstmt.executeQuery();
+			if (rs.next()) result = 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
+	
+	// 회원 가입 메서드
+	public int join(UserVO vo) {
+		int result = 0;
+		
+		String sql = "insert into users(id, pw, name, email, address) "
+				+ "values(?,?,?,?,?)";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPw());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getEmail());
+			pstmt.setString(5, vo.getAddress());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
