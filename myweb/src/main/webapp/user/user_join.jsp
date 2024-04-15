@@ -63,7 +63,7 @@
 				</table>
 				<br><br>
 				<input type="button" value="회원가입" class="btn btn-primary" onclick="check()">
-				<input type="button" value="로그인" class="btn btn-info" onclick="">
+				<input type="button" value="로그인" class="btn btn-info" onclick="location.href='user_login.jsp'">
 			</form>
 		</div>
 	</section>

@@ -3,6 +3,7 @@ package com.myweb.user.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -94,9 +95,63 @@ public class UserDAO {
 		return result;
 	}
 	
+	// 로그인 메서드
+	public int login(String id, String pw) {
+		int result = 0;
+		
+		String sql = "select * from users where id = ? and pw = ?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			
+			rs = pstmt.executeQuery();
+			if (rs.next()) result = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
 	
-	
-	
+	// 회원정보를 얻어오는 메서드
+	public UserVO getUserInfo(String id1) {
+		UserVO vo = null;
+		
+		String sql = "select * from users where id = ?";
+		
+		try {
+			// Connection Pool
+			conn = ds.getConnection();
+			
+			// PreparedStatement 
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id1);
+			// SQL 실행
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String address = rs.getString("address");
+				Timestamp regdate = rs.getTimestamp("regdate");
+				
+				vo = new UserVO(id, null, name, email, address, regdate);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		
+		return vo;
+	}
 	
 	
 	
