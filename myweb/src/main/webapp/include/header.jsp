@@ -32,12 +32,21 @@
                     <li>
                         <a href="">BOARD</a>
                     </li>
+                    <%if (session.getAttribute("user_id")== null) {%>
                     <li>
-                        <a href="">LOGIN</a>
+                        <a href="/myweb/user/user_login.jsp">LOGIN</a>
                     </li>
                     <li>
-                        <a href="" style="color:red">JOIN</a>
+                        <a href="/myweb/user/user_join.jsp" style="color:red">JOIN</a>
                     </li>
+                    <%}else{ %>
+                    <li>
+                        <a href="/myweb/user/user_logout.jsp">LOGOUT</a>
+                    </li>
+                    <li>
+                        <a href="/myweb/user/user_mypage.jsp" style="color:red">MyPage</a>
+                    </li>
+                    <%} %>
                 </ul>
             </div>
             
