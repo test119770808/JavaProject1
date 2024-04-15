@@ -201,5 +201,25 @@ public class UserDAO {
 		return result;
 	}
 	
+	//회원 삭제 메서드
+	public int delete(String id) {
+		int result = 0;
+		
+		String sql = "delete from users where id = ?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
 	
 }
