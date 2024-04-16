@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.myweb.util.JdbcUtil;
+
 public class BoardDAO {
 	
 	private static BoardDAO instance = new BoardDAO();
@@ -32,6 +34,21 @@ public class BoardDAO {
 	
 	//---------------- 메서드들 -------------------------
 	
+	// 게시글 등록 메서드
+	public void regist(String writer, String title, String content) {
+		String sql = "insert into board(writer, title, content) values(?,?,?)";
+		
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		
+		
+	}
 	
 	
 	

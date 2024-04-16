@@ -51,6 +51,9 @@ public class BoardController extends HttpServlet {
 			dp.forward(request, response);	
 		}else if(command.equals("/board/write.board")) {  // 글작성
 			response.sendRedirect("board_write.jsp");
+		}else if(command.equals("/board/register.board")) {
+			// 서비스 객체 생성
+			service = new RegisterServiceImpl();
 		}
 		
 		
