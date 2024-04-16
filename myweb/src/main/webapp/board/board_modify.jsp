@@ -34,33 +34,32 @@
 
 	<section>
 		<div align="center">
-			<form>
 			<% BoardVO vo = (BoardVO)request.getAttribute("vo"); %>
+			<form name="regform" action="update.board" method="post">
+				<h2>게시판 글수정 페이지</h2>
+				<hr>
 				<table border="1" style="width:500px">
 					<tr>
-						<td style="width:20%">글번호</td>
-						<td style="width:30%"><%=vo.getNum() %></td>
-						<td style="width:20%">조회수</td>
-						<td style="width:30%"><%=vo.getHit() %></td>
+						<td>글번호</td>
+						<td><input type="text" name="num" value="<%=vo.getNum() %>" readonly></td>
 					</tr>
 					<tr>
-						<td>작성일</td>
-						<td><%=vo.getRegdate() %></td>
 						<td>작성자</td>
-						<td><%=vo.getWriter() %></td>
+						<td><input type="text" name="writer" value="<%=vo.getWriter() %>" readonly></td>
 					</tr>
 					<tr>
-						<td>제목</td>
-						<td colspan="3"><%=vo.getTitle() %></td>
+						<td>글제목</td>
+						<td><input type="text" name="title" value="<%=vo.getTitle() %>"></td>
 					</tr>
 					<tr>
-						<td>내용</td>
-						<td colspan="3"><%=vo.getContent() %></td>
+						<td>글내용</td>
+						<td><textarea name="content" rows="10" style="width:100%"><%=vo.getContent() %></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="4" align="center">
+						<td colspan="2" align="center">
+							<input type="button" value="수정하기" onclick="modifyCheck()">
 							<input type="button" value="목록" onclick="location.href='list.board'">
-							<input type="button" value="수정" onclick="location.href='modify.board?num=<%=vo.getNum() %>'">
+							<input type="button" value="삭제하기" onclick="location.href='delete.board?num=<%=vo.getNum() %>'">
 						</td>
 					</tr>
 				</table>
@@ -70,6 +69,16 @@
     
     <%@include file="../include/footer.jsp" %>
     
+    <script type="text/javascript">
+    	function modifyCheck() {
+    		if(document.regform.title.value == "") {
+    			alert("제목을 입력하세요");
+    			return;
+    		}else if(confirm("게시글을 등록하겠습니까?")) {
+    			document.regform.submit();
+    		}
+    	}
+    </script>
 	
 </body>
 </html>

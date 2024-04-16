@@ -65,6 +65,23 @@ public class BoardController extends HttpServlet {
 			
 			RequestDispatcher dp = request.getRequestDispatcher("board_content.jsp");
 			dp.forward(request, response);
+		}else if(command.equals("/board/modify.board")) {
+			service = new ContentServiceImpl();
+			service.execute(request, response);
+			
+			RequestDispatcher dp = request.getRequestDispatcher("board_modify.jsp");
+			dp.forward(request, response);
+		}else if(command.equals("/board/update.board")) {
+
+			/*
+			 * 1. UpdateServiceImpl을 생성
+			 * 2. 서비스 영역에서 num, title, content을 받아서 update() 메서드를 실행
+			 * 3. DAO의 update() 에서는 update구문으로 데이/터를 수정
+			 * 4. 페이지 이름을 상세보기화면으로 연결(단, 필요한 값을 전달해야 함)
+			 * 
+			 * sql = "update board set title =?, content=?, where num=?"
+			 * 
+			 */
 		}
 		
 		
