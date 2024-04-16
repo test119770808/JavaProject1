@@ -49,6 +49,8 @@ public class BoardController extends HttpServlet {
 			// 전달해야 할 값은 service영역에서 전달할 내용을 강제저장
 			RequestDispatcher dp = request.getRequestDispatcher("board_list.jsp");
 			dp.forward(request, response);	
+		}else if(command.equals("/board/write.board")) {  // 글작성
+			response.sendRedirect("board_write.jsp");
 		}
 		
 		
