@@ -1,11 +1,5 @@
-<%@page import="com.myweb.board.model.BoardVO"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%
-	ArrayList<BoardVO> list = (ArrayList<BoardVO>)request.getAttribute("list");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,45 +31,42 @@
 
 	<%@ include file="../include/header.jsp" %>
 
-	<div class="container">
-		<h3>MyWeb 게시판</h3>
-		
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>글 번호</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>날짜</th>
-					<th>조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%for(BoardVO vo: list) { %>
-				<tr>
-					<td><%=vo.getNum() %></td>
-					<td><%=vo.getWriter() %></td>
-					<td>
-						<a href="content.board?num=<%=vo.getNum() %>"><%=vo.getTitle() %></a>
-					</td>
-					<td><%=vo.getRegdate() %></td>
-					<td><%=vo.getHit() %></td>
-				</tr>
-				<%} %>
-			</tbody>
-		</table>
-		
+	<section>
 		<div align="center">
-			<ul class="pagination pagination-sm">
-				<li><a href="">이전</a></li>
-				<li><a href="">1</a></li>
-				<li><a href="">다음</a></li>
-			</ul>
+			<form>
+				<table border="1" style="width:500px">
+					<tr>
+						<td style="width:20%">글번호</td>
+						<td style="width:30%"></td>
+						<td style="width:20%">조회수</td>
+						<td style="width:30%"></td>
+					</tr>
+					<tr>
+						<td>작성일</td>
+						<td></td>
+						<td>작성자</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>제목</td>
+						<td colspan="3"></td>
+					</tr>
+					<tr>
+						<td colspan="4">내용</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<input type="button" value="등록" onclick="registCheck()">
+							<input type="button" value="목록" onclick="location.href='list.board'">
+						</td>
+					</tr>
+				</table>
+			</form>
 		</div>
-	</div>
-	
+	</section>
     
     <%@include file="../include/footer.jsp" %>
+    
 	
 </body>
 </html>

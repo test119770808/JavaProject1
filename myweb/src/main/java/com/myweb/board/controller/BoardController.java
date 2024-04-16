@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.myweb.board.service.ContentServiceImpl;
 import com.myweb.board.service.GetListServiceImpl;
 import com.myweb.board.service.IBoardService;
+import com.myweb.board.service.RegisterServiceImp;
 
 
 @WebServlet("*.board")
@@ -53,7 +55,16 @@ public class BoardController extends HttpServlet {
 			response.sendRedirect("board_write.jsp");
 		}else if(command.equals("/board/register.board")) {
 			// 서비스 객체 생성
-			service = new RegisterServiceImpl();
+			service = new RegisterServiceImp();
+			service.execute(request, response);
+			
+			response.sendRedirect("list.board");
+		}else if(command.equals("/board/content.board")) {
+			service = new ContentServiceImpl();
+			service.execute(request, response);
+			
+			RequestDispatcher dp = request.getRequestDispatcher("board_content.jsp");
+			dp.forward(request, response);
 		}
 		
 		
