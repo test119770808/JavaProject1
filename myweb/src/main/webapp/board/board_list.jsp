@@ -1,3 +1,4 @@
+<%@page import="com.myweb.util.PageVO"%>
 <%@page import="com.myweb.board.model.BoardVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -64,11 +65,13 @@
 				<%} %>
 			</tbody>
 		</table>
-		
+		<% PageVO pageVO = (PageVO)request.getAttribute("pageVO"); %>
 		<div align="center">
 			<ul class="pagination pagination-sm">
 				<li><a href="">이전</a></li>
-				<li><a href="">1</a></li>
+				<%for(int i=pageVO.getStartPage(); i <= pageVO.getEndPage(); i++){ %>
+				<li><a href="list.board?pageNum=<%=i %>"><%=i %></a></li>
+				<%} %>
 				<li><a href="">다음</a></li>
 			</ul>
 		</div>

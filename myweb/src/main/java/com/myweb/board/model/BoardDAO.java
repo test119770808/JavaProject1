@@ -128,6 +128,27 @@ public class BoardDAO {
 		return list;
 	}
 	
+	// getTotal() - 총 게시물 수
+	public int getTotal() {
+		int result = 0;
+		String sql = "select count(*) as total from board";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("total");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+				
+		return result;
+	}
+	
 	// Content 메서드 구현
 	public BoardVO getContent(String num) {
 		BoardVO vo = null;

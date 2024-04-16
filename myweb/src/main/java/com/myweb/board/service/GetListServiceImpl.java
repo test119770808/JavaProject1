@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.myweb.board.model.BoardDAO;
 import com.myweb.board.model.BoardVO;
 import com.myweb.util.Criteria;
+import com.myweb.util.PageVO;
 
 public class GetListServiceImpl implements IBoardService {
 
@@ -34,6 +35,18 @@ public class GetListServiceImpl implements IBoardService {
 		ArrayList<BoardVO> list = dao.getList(cri);
 		
 		request.setAttribute("list", list);
+		
+		//화면에 보여질 페이지 버튼을 계산 처리... 
+		// 1. 총게시물 수
+		int total = dao.getTotal();
+		
+		PageVO vo = new PageVO(total, cri);
+		
+		request.setAttribute("pageVO", vo);
+		
+		
+		
+		
 	}
 
 }
