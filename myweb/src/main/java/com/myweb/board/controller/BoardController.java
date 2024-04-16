@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.myweb.board.service.ContentServiceImpl;
+import com.myweb.board.service.DeleteServiceImpl;
 import com.myweb.board.service.GetListServiceImpl;
 import com.myweb.board.service.IBoardService;
 import com.myweb.board.service.RegisterServiceImp;
+import com.myweb.board.service.UpdateServiceImpl;
 
 
 @WebServlet("*.board")
@@ -79,9 +81,28 @@ public class BoardController extends HttpServlet {
 			 * 3. DAO의 update() 에서는 update구문으로 데이/터를 수정
 			 * 4. 페이지 이름을 상세보기화면으로 연결(단, 필요한 값을 전달해야 함)
 			 * 
-			 * sql = "update board set title =?, content=?, where num=?"
+			 * sql = "update board set title =?, content=? where num=?"
 			 * 
 			 */
+			service = new UpdateServiceImpl();
+			service.execute(request, response);
+			
+			String num = request.getParameter("num");
+			response.sendRedirect("content.board?num="+num);
+		}else if(command.equals("/board/delete.board")) {
+			/*
+			 * 1. DeleteServiceImpl을 생성한다.
+			 * 2. 서비스 영역에서는 num을 받아서  delete()메서드를 실행
+			 * 3. DAO의 delete()에서는 delete구문으로 삭제
+			 * 4. 페이지 이동을 목록으로 
+			 * 
+			 * sql = "delete from board where num = ?";
+			 */
+			
+			service = new DeleteServiceImpl();
+			service.execute(request, response);
+			
+			response.sendRedirect("list.board");
 		}
 		
 		

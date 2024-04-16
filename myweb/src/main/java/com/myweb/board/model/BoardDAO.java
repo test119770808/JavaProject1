@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.myweb.util.Criteria;
 import com.myweb.util.JdbcUtil;
 
 public class BoardDAO {
@@ -59,17 +60,52 @@ public class BoardDAO {
 		
 	}
 	
-	// 게시글 목록 가져오기
-	public ArrayList<BoardVO> getList() {
+//	// 게시글 목록 가져오기
+//	public ArrayList<BoardVO> getList() {
+//		ArrayList<BoardVO> list = new ArrayList<>();
+//		
+//		String sql = "select * from board order by num desc";
+//		
+//		try {
+//			conn = ds.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				int num = rs.getInt("num");
+//				String writer = rs.getString("writer");
+//				String title = rs.getString("title");
+//				String content = rs.getString("content");
+//				Timestamp regdate = rs.getTimestamp("regdate");
+//				int hit = rs.getInt("hit");
+//				
+//				BoardVO vo = new BoardVO(num, writer, title, content, regdate, hit);
+//				
+//				//생성된 vo를 리스트에 추가
+//				list.add(vo);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			JdbcUtil.close(conn, pstmt, rs);
+//		}
+//		
+//		return list;
+//	}
+	
+	//페이징 처리된 getList(Criteria cri)
+	public ArrayList<BoardVO> getList(Criteria cri) {
 		ArrayList<BoardVO> list = new ArrayList<>();
 		
-		String sql = "select * from board order by num desc";
+		String sql = "select * from board order by num desc limit ?,?";
 		
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			pstmt.setInt(1, cri.getPageStart());
+			pstmt.setInt(2, cri.getCount());
 			
+			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int num = rs.getInt("num");
 				String writer = rs.getString("writer");
@@ -85,7 +121,7 @@ public class BoardDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			JdbcUtil.close(conn, pstmt, rs);
 		}
 		
@@ -118,7 +154,42 @@ public class BoardDAO {
 		return vo;
 	}
 	
+	//update 메서드
+	public void update(String num, String title, String content) {
+		
+		String sql = "update board set title = ?, content = ? where num = ?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, Integer.parseInt(num));
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+	}
 	
+	// delete 메서드
+	public void delete(String num) {
+		String sql = "delete from board where num = ?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+	}
 	
 
 }
