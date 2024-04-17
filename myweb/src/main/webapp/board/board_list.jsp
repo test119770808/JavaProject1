@@ -54,7 +54,7 @@
 					<td>${vo.num }</td>
 					<td>${vo.writer }</td>
 					<td>
-						<a href="content.board?num=${vo.num }">${vo.title }</a>
+						<a href="content.board?num=${vo.num }&pageNum=${pageVO.pageNum }">${vo.title }</a>
 					</td>
 					<td>${vo.regdate }</td>
 					<td>${vo.hit }</td>
