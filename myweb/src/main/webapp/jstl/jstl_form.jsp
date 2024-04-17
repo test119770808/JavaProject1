@@ -20,5 +20,12 @@
 			나이 : <input type="text" name="age"><br>
 			<input type="submit" value="확인">
 		</form>	
+		<h2>else if(choose)절 확인2</h2>
+		<!-- 점수를 입력 받아서 90점이상이면 A, 80점 이상이면 B, 70점이상이면 C
+		  60점 이상이면 D, 60점 미만이면 F가 출력되게 해주세요. -->
+		<form action="jstl_choose2.jsp">
+			점수 : <input type="text" name="point"><br> 
+			<input type="submit" value="확인">
+		</form>	
 	</body>
 </html>
