@@ -3,10 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%
-	ArrayList<BoardVO> list = (ArrayList<BoardVO>)request.getAttribute("list");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,27 +49,36 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%for(BoardVO vo: list) { %>
+				<c:forEach var="vo" items="${list }">
 				<tr>
-					<td><%=vo.getNum() %></td>
-					<td><%=vo.getWriter() %></td>
+					<td>${vo.num }</td>
+					<td>${vo.writer }</td>
 					<td>
-						<a href="content.board?num=<%=vo.getNum() %>"><%=vo.getTitle() %></a>
+						<a href="content.board?num=${vo.num }">${vo.title }</a>
 					</td>
-					<td><%=vo.getRegdate() %></td>
-					<td><%=vo.getHit() %></td>
+					<td>${vo.regdate }</td>
+					<td>${vo.hit }</td>
 				</tr>
-				<%} %>
+				</c:forEach>
 			</tbody>
 		</table>
-		<% PageVO pageVO = (PageVO)request.getAttribute("pageVO"); %>
+		
 		<div align="center">
 			<ul class="pagination pagination-sm">
-				<li><a href="">이전</a></li>
-				<%for(int i=pageVO.getStartPage(); i <= pageVO.getEndPage(); i++){ %>
-				<li><a href="list.board?pageNum=<%=i %>"><%=i %></a></li>
-				<%} %>
-				<li><a href="">다음</a></li>
+				<!-- 2. 이전 버튼 활성화 여부 -->
+				<c:if test="${pageVO.prev }">
+					<li><a href="list.board?pageNum=${pageVO.startPage -1 }">이전</a></li>
+				</c:if>
+				<!-- 1. 페이징 번호 처리...  -->
+				<c:forEach var="num" begin="${pageVO.startPage }" end="${pageVO.endPage }">
+					<li class="${num == pageVO.pageNum ? 'active':'' }">
+						<a href="list.board?pageNum=${num }">${num }</a>
+					</li>
+				</c:forEach>
+				<!-- 2. 다음 버튼 활성화 여부 -->
+				<c:if test="${pageVO.next }">
+					<li><a href="list.board?pageNum=${pageVO.endPage +1 }">다음</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</div>
